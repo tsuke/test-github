@@ -1,0 +1,57 @@
+<html>
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+	<link rel="Stylesheet" type="text/css" href="style/main.css"></link>
+	<title>ワクワクボタン</title>
+	<script type="text/javascript">
+		function ring() {
+			document.getElementById("wakuwaku").play();
+			var count = document.getElementById("count");
+			var counter = new Counter(count);
+			counter.count(1);
+		}
+		var Counter = function(n) {
+			var num = n;
+			this.count = function(d) {
+				var i = parseInt(num.innerHTML) + 1;
+				var digi = d;
+				var str = String(i);
+				while(str.length < digi) {
+					str = "0" + str;
+				}
+				num.innerHTML= str;
+				if(str=="89"){
+					document.getElementById("naoya").innerHTML = "<h1>なおや！奈良に行ってもわくわくしろよ！！いってらっしゃい！！！</h1>";
+				}
+				if(str=="100"){
+					document.getElementById("wakuwaku2").play();
+				}
+			}
+			this.reset = function() {
+				num.innerHTML = "0";
+			}
+		}
+	</script>
+</head>
+<body style="background-color: rgb(0, 0, 0)">
+	<audio id="wakuwaku" preload="auto">
+		<source src="./wakuwaku.m4a" type="audio/aac">
+		<source src="./wakuwaku.mp3" type="audio/mp3">
+		<source src="./wakuwaku.wav" type="audio/wav">
+	</audio>
+	<audio id="wakuwaku2" preload="auto">
+		<source src="./wakuwaku2.m4a" type="audio/aac">
+		<source src="./wakuwaku2.mp3" type="audio/mp3">
+		<source src="./wakuwaku2.wav" type="audio/wav">
+	</audio>
+<div id="container">
+	<h1>わくわくしてる？</h1>
+	<input type="image" src="./images/heee.png" onclick="ring();">
+	<div id="count">0</div>
+	<div id="naoya"></div>
+</div>
+<div id="copyright">
+	<p> presented by <a href="http://nowing.daa.jp/wp/">nowing</a></p>
+</div>
+</body>
+</html>
